@@ -1,0 +1,141 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Consulta de prestamos.",
+    "version": "1.0.0",
+    "title": "Prestamos"
+  },
+  "host": "localhost",
+  "tags": [
+    {
+      "name": "Prestamos",
+      "description": "Consulta de prestamos."
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/bhdleon/v1/system/dashboard",
+  "paths": {
+    "/loans": {
+      "get": {
+        "tags": [
+          "Prestamos"
+        ],
+        "description": "Obtener todos los prestamos del cliente.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentNumber",
+            "description": "Client id.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loans balance.",
+            "schema": {
+              "$ref": "#/definitions/response"
+            }
+          }
+        },
+        "operationId": "GetLoans"
+      }
+    }
+  },
+  "definitions": {
+    "response": {
+      "allOf": [
+        {
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "items": {
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "required": [
+              "alias",
+              "currency",
+              "code",
+              "status",
+              "productType",
+              "name",
+              "productNumber",
+              "balance",
+              "currencySymbol"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "alias": {
+                "type": "string",
+                "example": "EMPLEADOS ADQUISICION VIVIENDA EN RD$",
+                "pattern": "^(.*)$"
+              },
+              "balance": {
+                "type": "number",
+                "example": 3135445.84
+              },
+              "pendingLoanFee": {
+                "type": "number"
+              },
+              "code": {
+                "type": "string",
+                "example": "303",
+                "pattern": "^(.*)$"
+              },
+              "currency": {
+                "type": "string",
+                "example": "RD",
+                "pattern": "^(.*)$"
+              },
+              "currencySymbol": {
+                "type": "string",
+                "example": "$",
+                "pattern": "^(.*)$"
+              },
+              "formsPayment": {
+                "type": "string",
+                "example": "VIGENTE (SIN ATRASO)"
+              },
+              "loanFee": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string",
+                "example": "EMPLEADOS ADQUISICION VIVIENDA EN RD$",
+                "pattern": "^(.*)$"
+              },
+              "productNumber": {
+                "type": "string",
+                "example": "3344135",
+                "pattern": "^(.*)$"
+              },
+              "productType": {
+                "type": "string",
+                "example": "PRE",
+                "pattern": "^(.*)$"
+              },
+              "status": {
+                "type": "string",
+                "example": "Al día",
+                "pattern": "^(.*)$"
+              },
+              "transitBalance": {
+                "type": "number"
+              },
+              "type": {
+                "type": "number",
+                "example": "Prestamos"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
